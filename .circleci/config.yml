@@ -151,6 +151,9 @@ jobs:
       - run: ci/circleci-build-android.sh
       - run: sh -c "cd /build-$OCPN_TARGET; /bin/bash < upload.sh"
       - run: sh -c "ci/git-push.sh /build-$OCPN_TARGET"
+      - store_artifacts:
+          path: ./build
+          destination: android64_build
 
   build-android-armhf:
     docker:
@@ -163,6 +166,9 @@ jobs:
       - run: ci/circleci-build-android.sh
       - run: sh -c "cd /build-$OCPN_TARGET; /bin/bash < upload.sh"
       - run: sh -c "ci/git-push.sh /build-$OCPN_TARGET"
+      - store_artifacts:
+          path: ./build
+          destination: android32_build
 
   build-arm64-debian-bullseye:
         machine:
